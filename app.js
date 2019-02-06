@@ -10,16 +10,24 @@ app.set('view engine', 'html');
 //DataBase
 mongoose.connect("mongodb://localhost/mealplann_v1")
 app.use(bodyParser.urlencoded({extended: true}));
-//Routes 
+//Routes
+
+//Required Routes
+var commentRotes   = require("./routes/comments"),
+    mealplanRoutes = require("./routes/mealplans"),
+    indexRoutes    = require("./routes/index");
+    
 
 app.get("/",function(req,res){
- res.render("landing");  
+ res.render("landing.ejs");  
 });
 
 
-app.get()
+app.get("/mealplans", function(req,res){
+    res.render("mealplans/index.ejs")
+})
 
 app.listen(process.env.PORT, process.env.IP,function(){
   console.log("meal plan has started") ;
    
-})
+});
